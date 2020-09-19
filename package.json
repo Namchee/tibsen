@@ -15,13 +15,16 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/tough-cookie": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
     "eslint-config-google": "^0.14.0",
+    "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
   "dependencies": {
-    "got": "^11.6.2"
+    "got": "^11.6.2",
+    "tough-cookie": "^4.0.0"
   }
 }
