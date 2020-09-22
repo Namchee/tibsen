@@ -1,7 +1,6 @@
-import client from './../common/client';
 import { DeprecatedError } from '../exception/deprecated';
 import { UnauthorizedError } from '../exception/unauthorized';
-import { Got } from 'got';
+import { Got } from 'got/dist/source';
 
 export class SSOAuthenticator {
   private static readonly BASE_URL = 'https://sso.unpar.ac.id';
@@ -15,11 +14,11 @@ export class SSOAuthenticator {
   private static readonly SUBMIT_PATTERN = /<button\s*(type="submit")+\s*(value="(\w+)").*?>/;
   /* eslint-enable */
 
-  public client: Got;
-
-  public constructor() {
-    this.client = client;
-  }
+  public constructor(
+    public readonly client: Got,
+    private readonly username: string,
+    private readonly password: string,
+  ) { }
 
   private getMiscData = (body: string): Record<string, string> => {
     const formData: Record<string, string> = {};
@@ -37,10 +36,7 @@ export class SSOAuthenticator {
     return formData;
   }
 
-  public login = async (
-    username: string,
-    password: string,
-  ): Promise<boolean> => {
+  public login = async (): Promise<boolean> => {
     const url = `${SSOAuthenticator.BASE_URL}/${SSOAuthenticator.LOGIN_URL}`;
 
     // get the hidden url values
@@ -60,8 +56,8 @@ export class SSOAuthenticator {
       url,
       {
         form: {
-          username,
-          password,
+          username: this.username,
+          password: this.password,
           ...miscData,
         },
       },
