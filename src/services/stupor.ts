@@ -17,7 +17,7 @@ export class StuPorCrawler {
     const authenticatedClient = this.authenticator.client;
     const login = await this.authenticator.login();
 
-    if (login) {
+    if (!login) {
       throw new UnauthorizedError('Login failed');
     }
 

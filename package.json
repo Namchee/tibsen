@@ -4,10 +4,10 @@
   "description": "StuPor presence marking made easy ✌️",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist/ && tsc",
     "dev": "npx ts-node src/index.ts",
-    "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node dist/src/index.js",
+    "postuninstall": "npm prune"
   },
   "keywords": [],
   "author": {
@@ -20,11 +20,10 @@
     "@types/tough-cookie": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
     "eslint": "^7.9.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jsdoc": "^30.5.1",
+    "rimraf": "^3.0.2",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },

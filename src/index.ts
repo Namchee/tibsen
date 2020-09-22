@@ -5,9 +5,9 @@ import { SSOAuthenticator } from './services/sso';
 import { StuPorCrawler } from './services/stupor';
 
 (async () => {
-  const { day, hour } = DateTime.local().setZone('Asia/Jakarta');
+  const { weekday, hour } = DateTime.local().setZone('Asia/Jakarta');
 
-  if (config[day].includes(hour)) {
+  if (config[weekday - 1].includes(hour)) { // sunday is zero
     const [username, password] = process.argv.slice(2);
 
     if (!username) {
@@ -25,7 +25,7 @@ import { StuPorCrawler } from './services/stupor';
     const result = await crawler.markPresence();
 
     if (!result) {
-      throw new Error('Presence marking failed...');
+      throw new Error('Presence marking failed.');
     }
   }
 })();
