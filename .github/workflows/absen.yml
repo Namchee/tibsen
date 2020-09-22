@@ -23,4 +23,7 @@ jobs:
       - name: Build the files
         run: npm run build
       - name: Run the script
-        run: npm run start -- ${{ secrets.USERNAME }} ${{ secrets.PASSWORD }}
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+        run: npm run start

@@ -19,12 +19,12 @@ As I have said before, I don't encourage you to cheat on your presence data. You
 
 1. Fork this repository
 2. Modify `config.json` using [the configuration guide](#Configuration)
-3. Add your StuPor username and password with [GitHub Secrets](https://docs.github.com/en/actions/reference/encrypted-secrets)
+3. Add your StuPor username and password with [GitHub Secrets](https://docs.github.com/en/actions/reference/encrypted-secrets). Name the username with `UNPAR_EMAIL` and the password with `PASSWORD`.
 4. **Attend your class** without worrying about your presence!
 
 ## Configuration
 
-The configuration file is stored at `config.json` from the root directory.
+Your schedule file is stored at `schedule.json` from the root directory.
 `tibsen` will attempt to read this file before deciding if `tibsen`
 should automatically mark your StuPor presence in the current cycle or not.
 
@@ -49,6 +49,8 @@ For example, if `tibsen` is configured using this configuration:
 
 `tibsen` will automatically attempt to mark your StuPor presence
 every Monday at 7 A.M. and every Wednesday at 8 A.M. and 1 P.M. (note the 24-hour formatting).
+
+> **WARNING**: Corrupted config will cause the automated workflow to crash!
 
 ## Acknowledgements
 
