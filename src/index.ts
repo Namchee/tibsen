@@ -11,6 +11,8 @@ import { config } from 'dotenv';
   }
 
   const { weekday, hour } = DateTime.local().setZone('Asia/Jakarta');
+  console.log(`Current hour: ${hour}`);
+  console.log(`Current weekday: ${weekday}`);
 
   if (schedule[weekday - 1].includes(hour)) { // sunday is zero
     const username = process.env.UNPAR_EMAIL;
