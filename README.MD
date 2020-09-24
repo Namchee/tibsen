@@ -4,7 +4,8 @@
 
 Tibsen is a small utility script to automate presence marking for UNPAR students.
 
-Currently, on testing phase (please don't install it atm!)
+Currently, on testing phase (please don't install it atm!).
+Also it doesn't work for 7 A.M. classes yet.
 
 > ⚠️ **WARNING**: This script **DOES NOT** encourage you to cheat presence data on your class!
 Use this at your own risk!
