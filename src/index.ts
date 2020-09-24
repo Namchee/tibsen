@@ -32,7 +32,7 @@ import { config } from 'dotenv';
 
     if (!result) {
       throw new Error(
-        'Presence marking failed. Probably caused by corrupted config file'
+        'Presence marking failed. Probably caused by corrupted config file',
       );
     }
   }
