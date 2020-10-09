@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "routes": [
+    {
+      "src": "/absen",
+      "methods": ["POST"],
+      "dest": "/api/absen" 
+    }
+  ]
+}
