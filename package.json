@@ -4,7 +4,6 @@
   "description": "StuPor presence marking made easy ✌️",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist/ && tsc",
     "dev": "vercel dev",
     "postuninstall": "npm prune"
   },
