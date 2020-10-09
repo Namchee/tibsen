@@ -7,13 +7,15 @@ export interface RequestBody {
 }
 
 export function isRequestBody(body: any): asserts body is RequestBody {
-  const pattern = /\d+@student\.unpar\.ac\.id/;
+  const pattern = /(\D+)@student\.unpar\.ac\.id/;
 
   if (!body.email) {
     throw new ParameterError('Email must be provided');
   }
 
-  if (!pattern.test(body.email)) {
+  const email = body.email as string;
+
+  if (email.match(pattern) !== null) {
     throw new ParameterError('Invalid email');
   }
 
