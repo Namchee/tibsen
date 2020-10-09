@@ -5,7 +5,7 @@
 Tibsen is a small utility script to automate presence marking for UNPAR students.
 
 Currently, on testing phase (please don't install it atm!).
-Also it doesn't work for 7 A.M. classes yet.
+~~Also it doesn't work for 7 A.M. classes yet.~~
 
 > ⚠️ **WARNING**: This script **DOES NOT** encourage you to cheat presence data on your class!
 Use this at your own risk!
@@ -16,17 +16,21 @@ I created this script since the new presence marking requires student to login o
 
 As I have said before, I don't encourage you to cheat on your presence data. You must realize what's the best for yourself.
 
-## Installation
+## Usage
 
-1. Fork this repository
-2. Modify `config.json` using [the configuration guide](#Configuration)
-3. Add your StuPor username and password with [GitHub Secrets](https://docs.github.com/en/actions/reference/encrypted-secrets). Name the username with `UNPAR_EMAIL` and the password with `PASSWORD`.
-4. **Attend your class** without worrying about your presence!
+Send a POST request to [this link](tibsen.vercel.app) with these payloads
 
-## Configuration
+Name | Description
+---- | -----------
+email | UNPAR's student account email address
+password | UNPAR's student account password
+schedule | Your lecture schedule, see details [below](#About-Schedule)
 
-Your schedule file is stored at `schedule.json` from the root directory.
-`tibsen` will attempt to read this file before deciding if `tibsen`
+> It's recommended that you use a CRON job to send the request to make the presence management as painless as possible, however any HTTP request will do.
+
+## About Schedule
+
+`tibsen` will read your schedule before deciding if `tibsen`
 should automatically mark your StuPor presence in the current cycle or not.
 
 It's written in zero-based index array format, the first index is Monday,
@@ -34,7 +38,7 @@ the second index is Tuesday and so on until the fifth index which
 is Friday.
 
 Each day, you can specify on which hour should Tibsen mark
-your StuPor presence. You *must* specify the hour in 24-hour format.
+your StuPor presence. You *must* specify it in 24-hour format.
 
 For example, if `tibsen` is configured using this configuration:
 
@@ -51,7 +55,13 @@ For example, if `tibsen` is configured using this configuration:
 `tibsen` will automatically attempt to mark your StuPor presence
 every Monday at 7 A.M. and every Wednesday at 8 A.M. and 1 P.M. (note the 24-hour formatting).
 
-> **WARNING**: Corrupted config will cause the automated workflow to crash!
+## Data Privacy
+
+Technically, I won't even dare to take a peek at your account data. However, debugging process usually exposes your HTTP payload which includes your sensitive data.
+
+If this happens, I'll try to notify you as soon as possible. Please change your sensitive information as soon as possible.
+
+If you don't trust me, don't use this.
 
 ## Acknowledgements
 

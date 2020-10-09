@@ -4,9 +4,7 @@
   "description": "StuPor presence marking made easy ✌️",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -rf dist/ && tsc",
-    "dev": "cross-env NODE_ENV='development' npx ts-node src/index.ts",
-    "start": "node dist/src/index.js",
+    "dev": "vercel dev",
     "postuninstall": "npm prune"
   },
   "keywords": [],
@@ -20,8 +18,7 @@
     "@types/tough-cookie": "^4.0.0",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
-    "cross-env": "^7.0.2",
-    "dotenv": "^8.2.0",
+    "@vercel/node": "^1.8.4",
     "eslint": "^7.9.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jsdoc": "^30.5.1",
