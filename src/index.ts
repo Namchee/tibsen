@@ -1,23 +1,19 @@
-import { DateTime } from 'luxon';
-import { createHTTPClient } from './common/client';
-import { SSOAuthenticator } from './services/sso';
-import { StuPorCrawler } from './services/stupor';
-import { RequestBody } from './common/request';
-import { ParameterError } from './exception/parameter';
+import Koa from 'koa';
+import helmet from 'koa-helmet';
+import bodyParser from 'koa-bodyparser';
+import { router } from './router/routes';
+import { responseTimeMiddleware } from './util/middleware';
 
-export async function absen(params: RequestBody): Promise<void> {
-  const { schedule, email, password } = params;
-  const { weekday, hour } = DateTime.local().setZone('Asia/Jakarta');
+const app = new Koa();
 
-  if (schedule[weekday - 1].includes(hour)) { // sunday is zero
-    const httpClient = createHTTPClient();
-    const authenticator = new SSOAuthenticator(httpClient, email, password);
-    const crawler = new StuPorCrawler(authenticator);
+app.use(bodyParser());
+app.use(helmet());
+app.use(router.routes());
+app.use(router.allowedMethods());
 
-    const result = await crawler.markPresence();
+app.use(responseTimeMiddleware);
 
-    if (!result) {
-      throw new ParameterError('Wrong schedule');
-    }
-  }
-}
+const port = process.env.PORT || 3000;
+
+app.listen(port);
+console.log(`Listening on port ${port}`);
