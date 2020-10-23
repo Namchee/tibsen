@@ -1,5 +1,4 @@
 import { Context, Next } from 'koa';
-import { TibsenError } from '../exception/base';
 
 export async function responseTimeMiddleware(
   ctx: Context,
