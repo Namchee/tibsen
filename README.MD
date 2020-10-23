@@ -18,7 +18,7 @@ As I have said before, I don't encourage you to cheat on your presence data. You
 
 ## Usage
 
-Send a POST request to [this link](tibsen.vercel.app) with these payloads
+Send a POST request to ~~this link~~(will be updated later) with these payloads
 
 Name | Description
 ---- | -----------
