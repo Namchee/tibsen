@@ -1,4 +1,4 @@
-import { TibsenError } from "./base";
+import { TibsenError } from './base';
 
 export class ParameterError extends TibsenError {
   constructor(message: string) {
