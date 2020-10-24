@@ -19,10 +19,26 @@ As I have said before, I don't encourage you to cheat on your presence data. You
 
 1. Clone this repository
 2. Navigate to your freshly cloned directory
-3. Fill `config.json` with your credentials and schedule.
+3. Create a new file called `config.json` and fill it with your credentials and schedule (see [below](#configuration-format)).
 4. Build the files by executing `npm run build`
 5. (Windows Users) - Create a shortcut on your Startup folder to `batch/tibsen.bat`
 6. Enjoy your hassle-free lectures!
+
+## Configuration Format
+
+```json
+{
+  "email": "student_account_email",
+  "password": "student_account_password",
+  "schedule": [
+    [],
+    [8],
+    [14],
+    [7, 9],
+    [9]
+  ]
+}
+```
 
 ## Schedule
 
