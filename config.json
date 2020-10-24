@@ -1,0 +1,11 @@
+{
+  "email": "your_student_email",
+  "password": "account_password",
+  "schedule": [
+    [],
+    [8],
+    [14],
+    [7, 9],
+    [9]
+  ]
+}
