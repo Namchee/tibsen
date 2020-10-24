@@ -1,16 +1,16 @@
 import { ParameterError } from '../exception/parameter';
 
-export interface RequestBody {
+export interface Config {
   email: string;
   password: string;
   schedule: number[][];
 }
 
-export function isRequestBody(body: any): asserts body is RequestBody {
+export function isValidConfig(body: any): asserts body is Config {
   if (!body) {
     throw new ParameterError('Body is required');
   }
-  
+
   const pattern = /(\D+)@student\.unpar\.ac\.id/;
 
   if (!body.email) {

@@ -2,10 +2,9 @@
 
 [![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://github.com/google/gts) [![Made with TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
-Tibsen is a small utility script to automate presence marking for UNPAR students.
+Tibsen is a small utility script to automate presence marking for UNPAR students. Tibsen will also create a log `absen.log` in the current directory that stores tibsen execution history.
 
-Currently, on testing phase (please don't install it atm!).
-~~Also it doesn't work for 7 A.M. classes yet.~~
+Currently, on testing phase (please don't install it atm!). 
 
 > ⚠️ **WARNING**: This script **DOES NOT** encourage you to cheat presence data on your class!
 Use this at your own risk!
@@ -18,17 +17,14 @@ As I have said before, I don't encourage you to cheat on your presence data. You
 
 ## Usage
 
-Send a POST request to ~~this link~~(will be updated later) with these payloads
+1. Clone this repository
+2. Navigate to your freshly cloned directory
+3. Fill `config.json` with your credentials and schedule.
+4. Build the files by executing `npm run build`
+5. (Windows Users) - Create a shortcut on your Startup folder to `batch/tibsen.bat`
+6. Enjoy your hassle-free lectures!
 
-Name | Description
----- | -----------
-email | UNPAR's student account email address
-password | UNPAR's student account password
-schedule | Your lecture schedule, see details [below](#About-Schedule)
-
-> It's recommended that you use a CRON job to send the request to make the presence management as painless as possible, however any HTTP request will do.
-
-## About Schedule
+## Schedule
 
 `tibsen` will read your schedule before deciding if `tibsen`
 should automatically mark your StuPor presence in the current cycle or not.
@@ -54,14 +50,6 @@ For example, if `tibsen` is configured using this configuration:
 
 `tibsen` will automatically attempt to mark your StuPor presence
 every Monday at 7 A.M. and every Wednesday at 8 A.M. and 1 P.M. (note the 24-hour formatting).
-
-## Data Privacy
-
-Technically, I won't even dare to take a peek at your account data. However, debugging process usually exposes your HTTP payload which includes your sensitive data.
-
-If this happens, I'll try to notify you as soon as possible. Please change your sensitive information as soon as possible.
-
-If you don't trust me, don't use this.
 
 ## Acknowledgements
 
