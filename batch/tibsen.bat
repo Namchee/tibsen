@@ -1,1 +1,3 @@
-node %dp0/../dist/src/index.js
+cd %~dp0
+cd ..
+node dist\src\index.js

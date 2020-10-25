@@ -9,11 +9,13 @@ import { ParameterError } from './exception/parameter';
 import { TibsenError } from './exception/base';
 import config from './../config.json';
 
-const task = schedule('1 7-17 * * 1-5', async () => {
+logger.info('Tibsen started');
+
+schedule('1 7-17 * * 1-5', async () => {
   try {
     isValidConfig(config);
 
-    logger.write(`[${new Date().toISOString()}] Absen protocol initiated`);
+    logger.info('Absen protocol initiated');
 
     const { schedule, email, password } = config;
     const { weekday, hour } = DateTime.local().setZone('Asia/Jakarta');
@@ -29,24 +31,19 @@ const task = schedule('1 7-17 * * 1-5', async () => {
         throw new ParameterError('Wrong schedule');
       }
 
-      logger.write(
-        `[${new Date().toISOString()}] Successfully tibsen for ${email}`,
-      );
+      logger.info(`Successfully tibsen for ${email}`);
     }
   } catch (err) {
-    logger.write(
+    logger.error(
       `[${new Date().toISOString()}] Tibsen failed. Reason:`,
     );
 
     const error = err as TibsenError;
 
-    logger.write(
+    logger.error(
       `[${new Date().toISOString()}] ${error.name}: ${error.message}`,
     );
   }
 }, {
   timezone: 'Asia/Jakarta',
 });
-
-task.start();
-logger.write(`[${new Date().toISOString()}] Tibsen started`);
