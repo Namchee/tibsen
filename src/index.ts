@@ -9,7 +9,7 @@ import { ParameterError } from './exception/parameter';
 import { TibsenError } from './exception/base';
 import config from './../config.json';
 
-schedule('1 7-17 * * 1-5', async () => {
+const task = schedule('1 7-17 * * 1-5', async () => {
   try {
     isValidConfig(config);
 
@@ -44,6 +44,9 @@ schedule('1 7-17 * * 1-5', async () => {
       `[${new Date().toISOString()}] ${error.name}: ${error.message}`,
     );
   }
+}, {
+  timezone: 'Asia/Jakarta',
 });
 
-logger.write(`[${new Date()}] Tibsen started`);
+task.start();
+logger.write(`[${new Date().toISOString()}] Tibsen started`);
