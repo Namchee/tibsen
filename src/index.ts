@@ -34,15 +34,9 @@ schedule('1 7-17 * * 1-5', async () => {
       logger.info(`Successfully tibsen for ${email}`);
     }
   } catch (err) {
-    logger.error(
-      `[${new Date().toISOString()}] Tibsen failed. Reason:`,
-    );
-
     const error = err as TibsenError;
 
-    logger.error(
-      `[${new Date().toISOString()}] ${error.name}: ${error.message}`,
-    );
+    logger.error(`Tibsen failed. Reason: ${error.name}: ${error.message}`);
   }
 }, {
   timezone: 'Asia/Jakarta',
