@@ -1,14 +1,23 @@
-import create from 'got/dist/source/create';
 import { createLogger, format, transports } from 'winston';
+
+const { combine, timestamp, printf } = format;
+
+const tibsenFormat = printf(
+  ({ level, message, timestamp }) => {
+    return `[${timestamp}] (${level}): ${message}`;
+  },
+);
 
 export const logger = createLogger({
   level: 'info',
-  format: format.json(),
+  format: combine(
+    timestamp(),
+    tibsenFormat,
+  ),
   transports: [
     new transports.File(
       {
         filename: 'absen.log',
-        level: 'info',
       },
     ),
   ],
