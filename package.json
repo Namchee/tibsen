@@ -1,7 +1,8 @@
 {
   "name": "tibsen",
   "version": "0.0.1",
-  "description": "StuPor presence marking made easy ✌️",
+  "description": "Student Portal presence marking made easy",
+  "private": true,
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist/ && tsc",
@@ -18,7 +19,6 @@
     "@types/luxon": "^1.25.0",
     "@types/node-cron": "^2.0.3",
     "@types/tough-cookie": "^4.0.0",
-    "@types/winston": "^2.4.4",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "eslint": "^7.9.0",
@@ -33,7 +33,7 @@
     "dotenv": "^8.2.0",
     "got": "^11.6.2",
     "luxon": "^1.25.0",
-    "node-cron": "^2.0.3",
+    "node-cron": "^3.0.0",
     "tough-cookie": "^4.0.0",
     "winston": "^3.3.3"
   }
